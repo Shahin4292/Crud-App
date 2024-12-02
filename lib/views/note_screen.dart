@@ -1,16 +1,31 @@
+import 'package:crud_getx/model/notes_model.dart';
 import 'package:crud_getx/utils/colors.dart';
 import 'package:crud_getx/utils/modify_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class NoteScreen extends StatelessWidget {
-  NoteScreen({super.key});
+import '../controller/note_controller.dart';
 
-  final titleController = TextEditingController();
-  final descriptionController = TextEditingController();
+class NoteScreen extends StatelessWidget {
+  const NoteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(NoteController());
+    final arg = Get.arguments != null
+        ? Get.arguments as Map
+        : {
+            "isUpdate": false,
+            "note": null,
+          };
+    final bool isUpdate = arg["isUpdate"] ?? false;
+    final note = arg["note"] == null ? null : arg["note"] as NotesModel;
+    final int? index = arg["index"] == null ? null : arg["index"] as int;
+
+    final titleController =
+        TextEditingController(text: isUpdate ? note!.title : null);
+    final descriptionController =
+        TextEditingController(text: isUpdate ? note!.description : null);
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0,
@@ -52,7 +67,23 @@ class NoteScreen extends StatelessWidget {
                 descriptionController.text.isEmpty) {
               Get.snackbar('Error', "Title and Description are required?");
             } else {
-              print("Navigate");
+              isUpdate
+                  ? controller.updateNote(
+                      index!,
+                      NotesModel(
+                        title: titleController.text,
+                        description: descriptionController.text,
+                        createdDate: note!.createdDate,
+                        updatedDate: DateTime.now(),
+                      ))
+                  : controller.addNote(
+                      NotesModel(
+                        title: titleController.text,
+                        description: descriptionController.text,
+                        createdDate: DateTime.now(),
+                      ),
+                    );
+              Get.back();
             }
           },
           style: ElevatedButton.styleFrom(
