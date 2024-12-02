@@ -5,7 +5,6 @@ import 'package:crud_getx/utils/modify_text.dart';
 import 'package:crud_getx/widget/custom_single_note.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
