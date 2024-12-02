@@ -1,9 +1,13 @@
 import 'package:crud_getx/utils/colors.dart';
 import 'package:crud_getx/utils/modify_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class NoteScreen extends StatelessWidget {
-  const NoteScreen({super.key});
+  NoteScreen({super.key});
+
+  final titleController = TextEditingController();
+  final descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,14 @@ class NoteScreen extends StatelessWidget {
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(left: 12, right: 12, bottom: 20),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            if (titleController.text.isEmpty ||
+                descriptionController.text.isEmpty) {
+              Get.snackbar('Error', "Title and Description are required?");
+            } else {
+              print("Navigate");
+            }
+          },
           style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -62,6 +73,7 @@ class NoteScreen extends StatelessWidget {
         child: Column(
           children: [
             TextFormField(
+              controller: titleController,
               maxLines: 2,
               minLines: 1,
               style: const TextStyle(
@@ -82,6 +94,7 @@ class NoteScreen extends StatelessWidget {
             ),
             Expanded(
               child: TextFormField(
+                controller: descriptionController,
                 minLines: 30,
                 maxLines: 30,
                 style: const TextStyle(
