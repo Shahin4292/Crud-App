@@ -109,7 +109,7 @@ class NoteScreen extends StatelessWidget {
               minLines: 1,
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 25,
+                  fontSize: 23,
                   color: Colors.black),
               decoration: const InputDecoration(
                 border: InputBorder.none,
@@ -129,8 +129,8 @@ class NoteScreen extends StatelessWidget {
                 minLines: 30,
                 maxLines: 30,
                 style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20,
                     color: Colors.black),
                 decoration: const InputDecoration(
                   border: InputBorder.none,

@@ -4,6 +4,10 @@ class NotesModel {
   final DateTime createdDate;
   final DateTime? updatedDate;
 
-  NotesModel(this.createdDate, this.updatedDate,
-      {required this.title, required this.description});
+  NotesModel({
+    required this.title,
+    required this.description,
+    required this.createdDate,
+    this.updatedDate,
+  });
 }

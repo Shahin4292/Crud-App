@@ -81,16 +81,17 @@ class HomeScreen extends StatelessWidget {
                             // reverse: true,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
-                              final createdDateFormat = DateFormat.yMMMMd()
-                                  .format(_controller.notes[index].createdDate);
-                              final createdTimeFormat = DateFormat.jm()
-                                  .format(_controller.notes[index].createdDate);
+                              // final createdDateFormat = DateFormat.yMMMMd()
+                              //     .format(_controller.notes[index].createdDate);
+                              // final createdTimeFormat = DateFormat.jm()
+                              //     .format(_controller.notes[index].createdDate);
                               return CustomSingleNote(
-                                  title: _controller.notes[index].title,
-                                  description:
-                                      _controller.notes[index].description,
-                                  date:
-                                      '$createdDateFormat - $createdTimeFormat');
+                                // title: _controller.notes[index].title,
+                                // description:
+                                //     _controller.notes[index].description,
+                                // date: '$createdDateFormat - $createdTimeFormat',
+                                index: index,
+                              );
                             }),
                   ))
                 ],

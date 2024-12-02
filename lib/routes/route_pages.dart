@@ -8,11 +8,11 @@ class RoutePages {
   static List<GetPage<dynamic>> route = [
     GetPage(
       name: RouteNames.home,
-      page: () => const HomeScreen(),
+      page: () =>  HomeScreen(),
     ),
     GetPage(
       name: RouteNames.noteScreen,
-      page: () => const NoteScreen(),
+      page: () => NoteScreen(),
     )
   ];
 }
